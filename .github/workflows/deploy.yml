@@ -16,7 +16,7 @@ jobs:
     # 打包构建
     - name: Build
       uses: actions/setup-node@master
-    # - run: npm install --unsafe-perm=true --allow-root
+    - run: npm install --unsafe-perm=true --allow-root
     - run: npm run build
     - run: tar -zcvf release.tgz api build config extensions package.json package-lock.json pm2.config.json favicon.ico
 

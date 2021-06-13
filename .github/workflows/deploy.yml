@@ -16,9 +16,9 @@ jobs:
     # 打包构建
     - name: Build
       uses: actions/setup-node@master
-    - run: npm install
+    # - run: npm install --unsafe-perm=true --allow-root
     - run: npm run build
-    - run: tar -zcvf release.tgz api build config extensions package.json package-lock.json pm2.config.json
+    - run: tar -zcvf release.tgz api build config extensions package.json package-lock.json pm2.config.json favicon.ico
 
     # 发布 Release
     - name: Create Release
@@ -56,5 +56,6 @@ jobs:
           cd /root/blog-server
           wget https://github.com/yolilufei/blog-server/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
-          npm install --production
+          npm install --unsafe-perm=true --allow-root --production
+          npm run build
           pm2 reload pm2.config.json

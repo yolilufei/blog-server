@@ -1,5 +1,8 @@
 name: deploy-blog-server
-on: [push]
+on: 
+  push:
+    tag: 
+      - 'v*'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
